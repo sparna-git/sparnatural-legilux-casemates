@@ -1,0 +1,97 @@
+[
+  {
+    "label_en" : "Q1 All magnetic tapes with their identifier and title of the resource",
+    "label_fr" : "Q1 Alle Magnetbänder im Feld Trägertyp und deren Signatur und Titel",
+    "query" : {
+      "distinct": true,
+      "variables": [
+        {
+          "termType": "Variable",
+          "value": "Identifier"
+        },
+        {
+          "termType": "Variable",
+          "value": "Identifier_structured"
+        },
+        {
+          "termType": "Variable",
+          "value": "Instantiation"
+        },
+        {
+          "termType": "Variable",
+          "value": "RecordResource"
+        }
+      ],
+      "order": "asc",
+      "branches": [
+        {
+          "line": {
+            "s": "Instantiation",
+            "p": "http://shapes.performing-arts.ch/sparnatural/Instantiation_hasCarrierType_rec",
+            "o": "CarrierType_2",
+            "sType": "http://shapes.performing-arts.ch/instantiations/Instantiation",
+            "oType": "http://shapes.performing-arts.ch/instantiations/CarrierType",
+            "values": [
+              {
+                "label": "magnetic tape (2858)",
+                "rdfTerm": {
+                  "type": "uri",
+                  "value": "http://vocab.performing-arts.ch/fvodj"
+                }
+              }
+            ]
+          },
+          "children": []
+        },
+        {
+          "line": {
+            "s": "Instantiation",
+            "p": "http://shapes.performing-arts.ch/instantiations/Instantiation_identifier",
+            "o": "Identifier",
+            "sType": "http://shapes.performing-arts.ch/instantiations/Instantiation",
+            "oType": "http://special/Z_Text",
+            "values": []
+          },
+          "children": []
+        },
+        {
+          "line": {
+            "s": "Instantiation",
+            "p": "http://shapes.performing-arts.ch/instantiations/Instantiation_hasOrHadIdentifier",
+            "o": "MainIdentifier_10",
+            "sType": "http://shapes.performing-arts.ch/instantiations/Instantiation",
+            "oType": "http://shapes.performing-arts.ch/sparnatural/MainIdentifier",
+            "values": []
+          },
+          "children": [
+            {
+              "line": {
+                "s": "MainIdentifier_10",
+                "p": "http://shapes.performing-arts.ch/instantiations/Identifier_value",
+                "o": "Identifier_structured",
+                "sType": "http://shapes.performing-arts.ch/sparnatural/MainIdentifier",
+                "oType": "http://special/Z_Text",
+                "values": []
+              },
+              "children": [],
+              "optional": true
+            }
+          ],
+          "optional": true
+        },
+        {
+          "line": {
+            "s": "Instantiation",
+            "p": "http://shapes.performing-arts.ch/sparnatural/Instantiation_inversePath_hasInstantiation",
+            "o": "RecordResource",
+            "sType": "http://shapes.performing-arts.ch/instantiations/Instantiation",
+            "oType": "http://shapes.performing-arts.ch/collections/RecordResource",
+            "values": []
+          },
+          "children": [],
+          "optional": true
+        }
+      ]
+    }
+  }
+]
