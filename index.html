@@ -101,17 +101,17 @@
     <section id="sparnatural-section">
       <div class="container">
 
-        <!--
         <div class="row" style="font-style: italic; font-size:0.9em;">
-          <a href="#" id="tutorial"><i id="tutorial-toggle-icon" class="fad fa-question fa-fw"></i>&nbsp; <span data-i18n="tutorial"></a>
+          <div class="col-md">
+          <a href="javascript: return false;" id="advanced-simple" style="float: right;"><span data-i18n="toggle-advanced" id="advanced-simple-label"></span></a>
+          </div>
         </div>
-        -->
 
         <!-- This is where Sparnatural is inserted -->
         <div class="row">
 
           <spar-natural 
-            src="jolux/jolux.ttl https://xls2rdf.sparna.fr/rest/convert?noPostProcessings=true&url=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1z3grV3eNAVD41JkSdIz2j6ml23Z52QsW%2Fexport%3Fformat%3Dxlsx"
+            src="https://xls2rdf.sparna.fr/rest/convert?noPostProcessings=true&url=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F18aLyh9Vmi-VK403TWZmHFHG6v4T958sD%2Fexport%3Fformat%3Dxlsx"
             endpoint="https://data.legilux.public.lu/sparqlendpoint"
             lang="fr"
             defaultLang="fr"
@@ -329,6 +329,8 @@
             'actions.export': 'Export query in JSON',
             'actions.import': 'Import query in JSON',
             'tutorial': 'First time here ? watch the tutorial !',
+            'toggle-advanced': 'Advanced query',
+            'toggle-simple': 'Simple query',
             'share.modal.title': 'Direct query link',
             'share.modal.close': 'Close',
             'export.modal.title': 'Query as JSON',
@@ -348,6 +350,8 @@
             'actions.export': 'Exporter la requête en JSON',
             'actions.import': 'Charger une requête en JSON',
             'tutorial': 'Vous ne savez pas comment commencer ? cliquez ici pour être guidé !',
+            'toggle-advanced': 'Recherche avancée',
+            'toggle-simple': 'Recherche simple',
             'share.modal.title': 'Lien direct vers la requête',
             'share.modal.close': 'Fermer',
             'export.modal.title': 'Requête JSON',
@@ -483,21 +487,51 @@
       */
 
       // load sample queries
-      let queries = [];
-      fetch('queries.json').then(response => {
-        if (!response.ok) {
-           throw new Error("HTTP error " + response.status);
-        }
-        return response.json();
-      }).then(qs => {
-          qs.forEach(q => {
-            $('#select-examples').append($('<option>', { 
-              value: queries.length,
-              text : q.label_fr
-            }));
-            queries[queries.length] = q;
-          });
-     });
+      let loadSampleQueries = function(queriesPath) {
+        let queries = [];
+        fetch(queriesPath).then(response => {
+          if (!response.ok) {
+             throw new Error("HTTP error " + response.status);
+          }
+          return response.json();
+        }).then(qs => {
+            // empty select
+            $('#select-examples').html('<select class="form-control" style="width:100%; appearance: auto !important;" id="select-examples"><option value="none" data-i18n="example.placeholder" selected></option></select>');
+            $('#select-examples').i18n();
+            qs.forEach(q => {
+              $('#select-examples').append($('<option>', { 
+                value: queries.length,
+                text : q.label_fr
+              }));
+              queries[queries.length] = q;
+            });
+       });
+      }
+
+      loadSampleQueries("queries-simple.json");
+
+      document.getElementById('advanced-simple').onclick = function() {
+        let ADVANCED_SRC = "jolux/jolux.ttl https://xls2rdf.sparna.fr/rest/convert?noPostProcessings=true&url=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F1z3grV3eNAVD41JkSdIz2j6ml23Z52QsW%2Fexport%3Fformat%3Dxlsx"
+
+        let SIMPLE_SRC = "https://xls2rdf.sparna.fr/rest/convert?noPostProcessings=true&url=https%3A%2F%2Fdocs.google.com%2Fspreadsheets%2Fd%2F18aLyh9Vmi-VK403TWZmHFHG6v4T958sD%2Fexport%3Fformat%3Dxlsx";
+
+        if(sparnatural.getAttribute("src") == SIMPLE_SRC) {
+          sparnatural.setAttribute("src", ADVANCED_SRC);
+          loadSampleQueries("queries-advanced.json");
+          $('#advanced-simple-label').attr("data-i18n", "toggle-simple");
+        } else {
+          sparnatural.setAttribute("src", SIMPLE_SRC);
+          loadSampleQueries("queries-simple.json");
+          $('#advanced-simple-label').attr("data-i18n", "toggle-advanced");
+        }        
+        
+        document.getElementById('advanced-simple-label').innerHTML = "";
+        $('#advanced-simple-label').i18n();
+
+        return false;
+      }
+
+
 
     </script>
   </script>

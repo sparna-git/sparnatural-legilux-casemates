@@ -1,7 +1,7 @@
 [
   {
-    "label_en" : "Q1 All magnetic tapes with their identifier and title of the resource",
-    "label_fr" : "Q1 Alle Magnetbänder im Feld Trägertyp und deren Signatur und Titel",
+    "label_en" : "An advanced query...",
+    "label_fr" : "Une requête pour la config avancée",
     "query" : {
       "distinct": true,
       "variables": [
