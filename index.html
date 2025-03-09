@@ -519,14 +519,17 @@
           sparnatural.setAttribute("src", ADVANCED_SRC);
           loadSampleQueries("queries-advanced.json");
           $('#advanced-simple-label').attr("data-i18n", "toggle-simple");
+          $('#advanced-simple-label').text("Recherche simple");
         } else {
           sparnatural.setAttribute("src", SIMPLE_SRC);
           loadSampleQueries("queries-simple.json");
           $('#advanced-simple-label').attr("data-i18n", "toggle-advanced");
+          $('#advanced-simple-label').text("Recherche avancée");
         }        
         
-        document.getElementById('advanced-simple-label').innerHTML = "";
-        $('#advanced-simple-label').i18n();
+        // document.getElementById('advanced-simple-label').innerHTML = "";
+        // $('#advanced-simple-label').i18n();
+
 
         return false;
       }
