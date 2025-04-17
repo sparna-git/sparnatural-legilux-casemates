@@ -389,6 +389,23 @@
           var compressCodec = JsonUrl('lzma');
           compressCodec.decompress(compressedJson).then(json => {
             sparnatural.loadQuery(JSON.parse(json)) ;
+
+            // enable loader on button
+            sparnatural.disablePlayBtn() ;
+
+            let finalResult = sparnatural.executeSparql(
+              yasqe.getValue(),
+              (finalResult) => {
+                // send final result to YasR
+                yasr.setResponse(finalResult);
+                // re-enable submit button
+                sparnatural.enablePlayBtn();
+              },
+              (error) => {
+                console.error("Got an error when executing SPARQL in Sparnatural");
+                console.dir(error);
+              }
+            );
           });
         }   
       });  
