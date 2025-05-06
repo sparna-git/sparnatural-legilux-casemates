@@ -116,7 +116,7 @@
             lang="fr"
             defaultLang="fr"
             distinct="true"
-            limit="1000"
+            limit="5000"
             prefixes="jolux:http://data.legilux.public.lu/resource/ontology/jolux# skos:http://www.w3.org/2004/02/skos/core#"
             debug="true"
           ></spar-natural>
@@ -167,9 +167,13 @@
     <section id="yasr-section" style="margin-top:1em;">
       <div class="container">
 
-        <div id="yasr">
-          
+        <div class="row" style="margin-top: 2em;">
+          <div class="col-md-6">
+            <i class="fad fa-warning"></i>&nbsp; <span data-i18n="actions.warning.limit"></span>
+          </div>
+        </div>
 
+        <div id="yasr">
         </div>
 
       </div>
@@ -330,6 +334,7 @@
             'actions.share': 'Share',            
             'actions.export': 'Export query in JSON',
             'actions.import': 'Import query in JSON',
+            'actions.warning.limit': 'Result is always limited to 5000 lines.',
             'tutorial': 'First time here ? watch the tutorial !',
             'toggle-advanced': 'Advanced query',
             'toggle-simple': 'Simple query',
@@ -353,6 +358,7 @@
             'actions.share': 'Partager',            
             'actions.export': 'Exporter la requête en JSON',
             'actions.import': 'Charger une requête en JSON',
+            'actions.warning.limit': 'Le nombre maximum de résultats est fixé à 5 000.',
             'tutorial': 'Vous ne savez pas comment commencer ? cliquez ici pour être guidé !',
             'toggle-advanced': 'Recherche avancée',
             'toggle-simple': 'Recherche simple',
@@ -422,17 +428,17 @@
       Yasr.registerPlugin("TableX",SparnaturalYasguiPlugins.TableX);
       Yasr.registerPlugin("Grid",SparnaturalYasguiPlugins.GridPlugin);
       Yasr.registerPlugin("Stats",SparnaturalYasguiPlugins.StatsPlugin);
-      Yasr.registerPlugin("Timeline",Timeline);
       
       delete Yasr.plugins['table'];
       delete Yasr.plugins['response'];
       const yasr = new Yasr(document.getElementById("yasr"), {
-        pluginOrder: ["TableX", "Grid", "Stats", "Timeline"],
+        pluginOrder: ["TableX", "Grid", "Stats"],
         defaultPlugin: "TableX",
         // disable persistency
         persistencyExpire: 0,
-        maxPersistentResponseSize: 0
+        maxPersistentResponseSize: 0,
       });
+      yasr.plugins["TableX"].persistentConfig.compact = true;
 
       if(lang == "fr") { 
         yasr.plugins["Grid"].config.lang = "fr";
