@@ -63,7 +63,7 @@
 shape:Act a sh:NodeShape;
   sh:targetClass jolux:Act;
   sh:closed "true"^^xsd:boolean;
-  sh:ignoredProperties _:edd6143998a34be492b5ce3b23fc834d75416;
+  sh:ignoredProperties _:1c23ec99aeed4801a9fbc3eddcf4f8d665382;
   rdfs:label "Acte"@fr, "Act"@en;
   sh:description "Actes";
   sh:property shape:Act_typeDocument, shape:Act_responsibilityOf, shape:Act_isPartOf,
@@ -75,16 +75,15 @@ shape:Act a sh:NodeShape;
     shape:Act_repealedBy, shape:Act_rectifies, shape:Act_rectifiedBy, shape:Act_foreseesBasisFor,
     shape:Act_foreseesModificationBy, shape:Act_foreseesRectificationBy, shape:Act_foreseesRepealBy .
 
-_:edd6143998a34be492b5ce3b23fc834d75416 rdf:first rdf:type;
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665382 rdf:first rdf:type;
   rdf:rest rdf:nil .
 
 shape:Consolidation a sh:NodeShape;
   sh:target shape:Consolidation-target;
   sh:closed "true"^^xsd:boolean;
-  sh:ignoredProperties _:edd6143998a34be492b5ce3b23fc834d75417;
+  sh:ignoredProperties _:1c23ec99aeed4801a9fbc3eddcf4f8d665383;
   rdfs:label "Consolidation"@fr, "Consolidation"@en;
   sh:description "Consolidations d'un acte de base au fur et à mesure de ses modifications.";
-  sh:deactivated "true"^^xsd:boolean;
   sh:property shape:Act_isPartOf, shape:Act_subjectLevelTheme, shape:Act_subjectLevelLieu,
     shape:Act_subjectLevelCountry, shape:Act_subjectLevelOrganisation, shape:Consolidation_typeDocument,
     shape:Consolidation_responsibilityOf, shape:Consolidation_inForceStatus, shape:Consolidation_publicationDate,
@@ -97,13 +96,13 @@ WHERE {
  FILTER NOT EXISTS { $this a <http://data.legilux.public.lu/resource/ontology/jolux#Code> }
 }""" .
 
-_:edd6143998a34be492b5ce3b23fc834d75417 rdf:first rdf:type;
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665383 rdf:first rdf:type;
   rdf:rest rdf:nil .
 
 shape:CodeRecueil a sh:NodeShape;
   sh:target shape:CodeRecueil-target;
   sh:closed "true"^^xsd:boolean;
-  sh:ignoredProperties _:edd6143998a34be492b5ce3b23fc834d75418;
+  sh:ignoredProperties _:1c23ec99aeed4801a9fbc3eddcf4f8d665384;
   rdfs:label "Code ou Recueil"@fr, "Code or Collection"@en;
   sh:description "Code, regroupant différents Actes et/ou Consolidations.";
   sh:property shape:CodeRecueil_typeDocument, shape:CodeRecueil_responsibilityOf, shape:CodeRecueil_inForceStatus,
@@ -114,7 +113,7 @@ WHERE {
  $this a ?type . VALUES ?type { <http://data.legilux.public.lu/resource/ontology/jolux#Collection> <http://data.legilux.public.lu/resource/ontology/jolux#Code> }
 }""" .
 
-_:edd6143998a34be492b5ce3b23fc834d75418 rdf:first rdf:type;
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665384 rdf:first rdf:type;
   rdf:rest rdf:nil .
 
 shape:MemorialSerial a sh:NodeShape;
@@ -146,6 +145,7 @@ shape:Event a sh:NodeShape;
   sh:deactivated "true"^^xsd:boolean .
 
 shape:Date a sh:NodeShape;
+  sh:node shape:Metadata;
   sh:nodeKind sh:Literal;
   rdfs:label "Date"@fr, "Date"@en .
 
@@ -205,101 +205,121 @@ shape:InitialDraft a sh:NodeShape;
 
 shape:EnforcementStatus a sh:NodeShape;
   sh:targetClass jolux:EnforcementStatus;
+  sh:node shape:Metadata;
   rdfs:label "Statut"@fr, "Enforcement Status"@en;
   sh:description "Statuts de mise en application des ressources juridiques.";
   sh:property shape:Concept_prefLabel, shape:EnforcementStatus_inScheme .
 
 shape:InstrumentType a sh:NodeShape;
   sh:targetClass jolux:InstrumentType;
+  sh:node shape:Metadata;
   rdfs:label "Type d'instrument"@fr, "Instrument Type"@en;
   sh:property shape:Concept_prefLabel, shape:InstrumentType_inScheme .
 
 shape:InternationalActor a sh:NodeShape;
   sh:targetClass jolux:InternationalActor;
+  sh:node shape:Metadata;
   rdfs:label "Acteur international"@fr, "International Actor"@en;
   sh:property shape:Concept_prefLabel, shape:InternationalActor_inScheme .
 
 shape:ImpactType a sh:NodeShape;
   sh:targetClass jolux:ImpactType;
+  sh:node shape:Metadata;
   rdfs:label "Type d'impact"@fr, "Impact Type"@en;
   sh:property shape:Concept_prefLabel, shape:ImpactType_inScheme .
 
 shape:TreatyAccessionType a sh:NodeShape;
   sh:targetClass jolux:TreatyAccessionType;
+  sh:node shape:Metadata;
   rdfs:label "Type d'accès au traité"@fr, "Treaty Accession Type"@en;
   sh:property shape:Concept_prefLabel, shape:TreatyAccessionType_inScheme .
 
 shape:StatusDraft a sh:NodeShape;
   sh:targetClass jolux:StatusDraft;
+  sh:node shape:Metadata;
   rdfs:label "Statut"@fr, "Status Draft"@en;
   sh:property shape:Concept_prefLabel, shape:StatusDraft_inScheme .
 
 shape:NotificationType a sh:NodeShape;
   sh:targetClass jolux:NotificationType;
+  sh:node shape:Metadata;
   rdfs:label "Types de notifications"@fr, "Notification Type"@en;
   sh:property shape:Concept_prefLabel, shape:NotificationType_inScheme .
 
 shape:ProjectType a sh:NodeShape;
   sh:targetClass jolux:ProjectType;
+  sh:node shape:Metadata;
   rdfs:label "Type"@fr, "Project Type"@en;
   sh:property shape:Concept_prefLabel, shape:ProjectType_inScheme .
 
 shape:language a sh:NodeShape;
   sh:targetClass jolux:language;
+  sh:node shape:Metadata;
   rdfs:label "Langue"@fr, "Language"@en;
   sh:description "Langues utilisées pour la rédaction des textes juridiques.";
   sh:property shape:Concept_prefLabel, shape:language_inScheme .
 
 shape:LegalResourceDocumentType a sh:NodeShape;
   sh:targetClass jolux:LegalResourceDocumentType;
+  sh:node shape:Metadata;
   rdfs:label "Type"@fr, "Type"@en;
   sh:property shape:Concept_prefLabel, shape:LegalResourceDocumentType_inScheme .
 
 shape:MediaType a sh:NodeShape;
   sh:targetClass jolux:MediaType;
+  sh:node shape:Metadata;
   rdfs:label "Type de média"@fr, "Media Type"@en;
   sh:property shape:Concept_prefLabel, shape:MediaType_inScheme .
 
 shape:userFormat a sh:NodeShape;
   sh:targetClass jolux:userFormat;
+  sh:node shape:Metadata;
   rdfs:label "Format utilisateur"@fr, "user Format"@en;
   sh:property shape:Concept_prefLabel, shape:userFormat_inScheme .
 
 shape:LegalInstitution a sh:NodeShape;
   sh:targetClass jolux:LegalInstitution;
+  sh:node shape:Metadata;
   rdfs:label "Auteur"@fr, "Author"@en;
   sh:property shape:Concept_prefLabel, shape:LegalInstitution_inScheme .
 
 shape:StatusVersion a sh:NodeShape;
   sh:targetClass jolux:StatusVersion;
+  sh:node shape:Metadata;
   rdfs:label "Statut de la version"@fr, "Status Version"@en;
   sh:property shape:Concept_prefLabel, shape:StatusVersion_inScheme .
 
 shape:License a sh:NodeShape;
   sh:targetClass jolux:License;
+  sh:node shape:Metadata;
   rdfs:label "Licence"@fr, "License"@en;
   sh:property shape:Concept_prefLabel, shape:License_inScheme .
 
 shape:DraftDocumentType a sh:NodeShape;
+  sh:node shape:Metadata;
   rdfs:label "Type (draft)"@fr, "Draft Document Type"@en;
   sh:property shape:Concept_prefLabel, shape:DraftDocumentType_inScheme .
 
 shape:gender a sh:NodeShape;
+  sh:node shape:Metadata;
   rdfs:label "genre"@fr, "gender"@en;
   sh:property shape:Concept_prefLabel, shape:gender_inScheme .
 
 shape:HonorificTitle a sh:NodeShape;
   sh:targetClass jolux:HonorificTitle;
+  sh:node shape:Metadata;
   rdfs:label "Titre honorifique"@fr, "Honorific Title"@en;
   sh:property shape:Concept_prefLabel, shape:HonorificTitle_inScheme .
 
 shape:LegalInstitutionHistory a sh:NodeShape;
   sh:targetClass jolux:LegalInstitutionHistory;
+  sh:node shape:Metadata;
   rdfs:label "Historique des institutions législatives"@fr, "Legal Institution History"@en;
   sh:property shape:Concept_prefLabel .
 
 shape:LegalSubject a sh:NodeShape;
   sh:targetClass jolux:LegalSubject;
+  sh:node shape:Metadata;
   rdfs:label "Sujet"@fr, "Subject"@en;
   sh:property shape:Concept_prefLabel, shape:LegalSubject_inScheme .
 
@@ -326,20 +346,37 @@ shape:LegalSubjectTheme a sh:NodeShape;
   sh:property shape:Concept_prefLabel, shape:LegalSubjectTheme_inScheme .
 
 shape:PartieContractantePays a sh:NodeShape;
+  sh:node shape:Metadata;
   rdfs:label "Partie contractante (Pays)"@fr, "Treaty party (country)"@en;
   sh:property shape:Concept_prefLabel .
 
 shape:PartieContractanteOrganisation a sh:NodeShape;
+  sh:node shape:Metadata;
   rdfs:label "Partie contractante (Organisation)"@fr, "Treaty party (organization)"@en;
   sh:property shape:Concept_prefLabel .
 
 shape:SousEgideDe a sh:NodeShape;
+  sh:node shape:Metadata;
   rdfs:label "Sous l'égide de"@fr, "Under umbrella of"@en;
   sh:property shape:Concept_prefLabel .
 
 shape:TreatySubjectTheme a sh:NodeShape;
+  sh:node shape:Metadata;
   rdfs:label "Domaine"@fr, "Treaty domain"@en;
   sh:property shape:Concept_prefLabel, shape:TreatySubjectTheme_inScheme .
+
+shape:Document a sh:NodeShape;
+  rdfs:label "Document"@fr, "Document"@en;
+  sh:deactivated "true"^^xsd:boolean .
+
+shape:Processus a sh:NodeShape;
+  rdfs:label "Processus"@fr, "Processus"@en;
+  sh:deactivated "true"^^xsd:boolean .
+
+shape:Metadata a sh:NodeShape;
+  rdfs:label "Metadata"@fr, "Métadonnées"@en;
+  sh:order "1"^^xsd:integer;
+  sh:deactivated "true"^^xsd:boolean .
 
 shape:Act_typeDocument sh:path jolux:typeDocument;
   sh:name "has type"@en, "est de type"@fr;
@@ -361,7 +398,7 @@ shape:Act_responsibilityOf sh:path jolux:responsibilityOf;
   dash:searchWidget config-core:ListProperty;
   datasources:datasource datasources:list_skospreflabel_count .
 
-shape:Act_isPartOf sh:path _:edd6143998a34be492b5ce3b23fc834d75419;
+shape:Act_isPartOf sh:path _:1c23ec99aeed4801a9fbc3eddcf4f8d665385;
   sh:name "is in serie"@en, "est publié dans la série"@fr;
   sh:description "Indique la série du mémorial dans lequel l'acte a été publié"@fr;
   sh:nodeKind sh:IRI;
@@ -369,10 +406,10 @@ shape:Act_isPartOf sh:path _:edd6143998a34be492b5ce3b23fc834d75419;
   dash:searchWidget config-core:ListProperty;
   datasources:datasource shape:MemorialSerialDatasource .
 
-_:edd6143998a34be492b5ce3b23fc834d75419 rdf:first jolux:isPartOf;
-  rdf:rest _:edd6143998a34be492b5ce3b23fc834d75420 .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665385 rdf:first jolux:isPartOf;
+  rdf:rest _:1c23ec99aeed4801a9fbc3eddcf4f8d665386 .
 
-_:edd6143998a34be492b5ce3b23fc834d75420 rdf:first jolux:isMemberOf;
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665386 rdf:first jolux:isMemberOf;
   rdf:rest rdf:nil .
 
 shape:Act_inForceStatus sh:path jolux:inForceStatus;
@@ -412,14 +449,14 @@ shape:Act_modifies sh:path jolux:modifies;
   sh:class jolux:Act;
   dash:searchWidget config-core:AutocompleteProperty .
 
-shape:Act_modifiedBy sh:path _:edd6143998a34be492b5ce3b23fc834d75421;
+shape:Act_modifiedBy sh:path _:1c23ec99aeed4801a9fbc3eddcf4f8d665387;
   sh:name "modified By"@en, "modifié par"@fr;
   sh:description "Indique la ressource légale qui modifie la ressource légale décrite."@fr;
   sh:nodeKind sh:IRI;
   sh:class jolux:Act;
   dash:searchWidget config-core:AutocompleteProperty .
 
-_:edd6143998a34be492b5ce3b23fc834d75421 sh:inversePath jolux:modifies .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665387 sh:inversePath jolux:modifies .
 
 shape:Act_transposes sh:path jolux:transposes;
   sh:name "transposes"@en, "transpose"@fr;
@@ -428,7 +465,7 @@ shape:Act_transposes sh:path jolux:transposes;
   sh:class jolux:EULegalResource;
   dash:searchWidget config-core:AutocompleteProperty .
 
-shape:Act_subjectLevelTheme sh:path _:edd6143998a34be492b5ce3b23fc834d75422;
+shape:Act_subjectLevelTheme sh:path _:1c23ec99aeed4801a9fbc3eddcf4f8d665388;
   sh:name "has subject"@en, "a pour sujet"@fr;
   sh:description "Indique les sujets traités par la ressource légale."@fr;
   sh:nodeKind sh:IRI;
@@ -437,15 +474,15 @@ shape:Act_subjectLevelTheme sh:path _:edd6143998a34be492b5ce3b23fc834d75422;
   dash:searchWidget config-core:ListProperty;
   datasources:datasource shape:list_skosprefLabel_legal-subject-theme_count .
 
-_:edd6143998a34be492b5ce3b23fc834d75422 sh:alternativePath _:edd6143998a34be492b5ce3b23fc834d75423 .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665388 sh:alternativePath _:1c23ec99aeed4801a9fbc3eddcf4f8d665389 .
 
-_:edd6143998a34be492b5ce3b23fc834d75423 rdf:first jolux:subjectLevel1;
-  rdf:rest _:edd6143998a34be492b5ce3b23fc834d75424 .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665389 rdf:first jolux:subjectLevel1;
+  rdf:rest _:1c23ec99aeed4801a9fbc3eddcf4f8d665390 .
 
-_:edd6143998a34be492b5ce3b23fc834d75424 rdf:first jolux:subjectLevel2;
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665390 rdf:first jolux:subjectLevel2;
   rdf:rest rdf:nil .
 
-shape:Act_subjectLevelLieu sh:path _:edd6143998a34be492b5ce3b23fc834d75425;
+shape:Act_subjectLevelLieu sh:path _:1c23ec99aeed4801a9fbc3eddcf4f8d665391;
   sh:name "has subject"@en, "a pour sujet"@fr;
   sh:description "Indique les sujets traités par la ressource légale."@fr;
   sh:nodeKind sh:IRI;
@@ -454,15 +491,15 @@ shape:Act_subjectLevelLieu sh:path _:edd6143998a34be492b5ce3b23fc834d75425;
   dash:searchWidget config-core:ListProperty;
   datasources:datasource shape:list_skosprefLabel_place_count .
 
-_:edd6143998a34be492b5ce3b23fc834d75425 sh:alternativePath _:edd6143998a34be492b5ce3b23fc834d75426 .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665391 sh:alternativePath _:1c23ec99aeed4801a9fbc3eddcf4f8d665392 .
 
-_:edd6143998a34be492b5ce3b23fc834d75426 rdf:first jolux:subjectLevel1;
-  rdf:rest _:edd6143998a34be492b5ce3b23fc834d75427 .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665392 rdf:first jolux:subjectLevel1;
+  rdf:rest _:1c23ec99aeed4801a9fbc3eddcf4f8d665393 .
 
-_:edd6143998a34be492b5ce3b23fc834d75427 rdf:first jolux:subjectLevel2;
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665393 rdf:first jolux:subjectLevel2;
   rdf:rest rdf:nil .
 
-shape:Act_subjectLevelCountry sh:path _:edd6143998a34be492b5ce3b23fc834d75428;
+shape:Act_subjectLevelCountry sh:path _:1c23ec99aeed4801a9fbc3eddcf4f8d665394;
   sh:name "has subject"@en, "a pour sujet"@fr;
   sh:description "Indique les sujets traités par la ressource légale."@fr;
   sh:nodeKind sh:IRI;
@@ -471,15 +508,15 @@ shape:Act_subjectLevelCountry sh:path _:edd6143998a34be492b5ce3b23fc834d75428;
   dash:searchWidget config-core:ListProperty;
   datasources:datasource shape:list_skosprefLabel_country_count .
 
-_:edd6143998a34be492b5ce3b23fc834d75428 sh:alternativePath _:edd6143998a34be492b5ce3b23fc834d75429 .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665394 sh:alternativePath _:1c23ec99aeed4801a9fbc3eddcf4f8d665395 .
 
-_:edd6143998a34be492b5ce3b23fc834d75429 rdf:first jolux:subjectLevel1;
-  rdf:rest _:edd6143998a34be492b5ce3b23fc834d75430 .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665395 rdf:first jolux:subjectLevel1;
+  rdf:rest _:1c23ec99aeed4801a9fbc3eddcf4f8d665396 .
 
-_:edd6143998a34be492b5ce3b23fc834d75430 rdf:first jolux:subjectLevel2;
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665396 rdf:first jolux:subjectLevel2;
   rdf:rest rdf:nil .
 
-shape:Act_subjectLevelOrganisation sh:path _:edd6143998a34be492b5ce3b23fc834d75431;
+shape:Act_subjectLevelOrganisation sh:path _:1c23ec99aeed4801a9fbc3eddcf4f8d665397;
   sh:name "has subject"@en, "a pour sujet"@fr;
   sh:description "Indique les sujets traités par la ressource légale."@fr;
   sh:nodeKind sh:IRI;
@@ -488,57 +525,57 @@ shape:Act_subjectLevelOrganisation sh:path _:edd6143998a34be492b5ce3b23fc834d754
   dash:searchWidget config-core:ListProperty;
   datasources:datasource shape:list_skosprefLabel_organisation_count .
 
-_:edd6143998a34be492b5ce3b23fc834d75431 sh:alternativePath _:edd6143998a34be492b5ce3b23fc834d75432 .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665397 sh:alternativePath _:1c23ec99aeed4801a9fbc3eddcf4f8d665398 .
 
-_:edd6143998a34be492b5ce3b23fc834d75432 rdf:first jolux:subjectLevel1;
-  rdf:rest _:edd6143998a34be492b5ce3b23fc834d75433 .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665398 rdf:first jolux:subjectLevel1;
+  rdf:rest _:1c23ec99aeed4801a9fbc3eddcf4f8d665399 .
 
-_:edd6143998a34be492b5ce3b23fc834d75433 rdf:first jolux:subjectLevel2;
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665399 rdf:first jolux:subjectLevel2;
   rdf:rest rdf:nil .
 
-shape:Act_draft sh:path _:edd6143998a34be492b5ce3b23fc834d75434;
+shape:Act_draft sh:path _:1c23ec99aeed4801a9fbc3eddcf4f8d665400;
   sh:name "draft"@en, "projet d'origine"@fr;
   sh:description "Indique le projet à l'origine de la ressource légale décrite."@fr;
   sh:nodeKind sh:IRI;
   sh:node shape:InitialDraft;
   dash:searchWidget config-core:NonSelectableProperty .
 
-_:edd6143998a34be492b5ce3b23fc834d75434 sh:inversePath jolux:hasResultingLegalResource .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665400 sh:inversePath jolux:hasResultingLegalResource .
 
-shape:Act_conso sh:path _:edd6143998a34be492b5ce3b23fc834d75435;
+shape:Act_conso sh:path _:1c23ec99aeed4801a9fbc3eddcf4f8d665401;
   sh:name "consolidation"@en, "a pour consolidation"@fr;
   sh:description "Indique la consolidation."@fr;
   sh:nodeKind sh:IRI;
   sh:node shape:Consolidation;
   dash:searchWidget config-core:NonSelectableProperty .
 
-_:edd6143998a34be492b5ce3b23fc834d75435 rdf:first jolux:isMemberOf;
-  rdf:rest _:edd6143998a34be492b5ce3b23fc834d75436 .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665401 rdf:first jolux:isMemberOf;
+  rdf:rest _:1c23ec99aeed4801a9fbc3eddcf4f8d665402 .
 
-_:edd6143998a34be492b5ce3b23fc834d75436 rdf:first _:edd6143998a34be492b5ce3b23fc834d75437;
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665402 rdf:first _:1c23ec99aeed4801a9fbc3eddcf4f8d665403;
   rdf:rest rdf:nil .
 
-_:edd6143998a34be492b5ce3b23fc834d75437 sh:inversePath jolux:isMemberOf .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665403 sh:inversePath jolux:isMemberOf .
 
-shape:Act_displayTitle sh:path _:edd6143998a34be492b5ce3b23fc834d75438;
+shape:Act_displayTitle sh:path _:1c23ec99aeed4801a9fbc3eddcf4f8d665404;
   dash:searchWidget config-core:SearchProperty;
   dash:propertyRole dash:LabelRole;
   sh:deactivated "true"^^xsd:boolean .
 
-_:edd6143998a34be492b5ce3b23fc834d75438 rdf:first jolux:isRealizedBy;
-  rdf:rest _:edd6143998a34be492b5ce3b23fc834d75439 .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665404 rdf:first jolux:isRealizedBy;
+  rdf:rest _:1c23ec99aeed4801a9fbc3eddcf4f8d665405 .
 
-_:edd6143998a34be492b5ce3b23fc834d75439 rdf:first jolux:title;
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665405 rdf:first jolux:title;
   rdf:rest rdf:nil .
 
-shape:Act_TreatyProcess sh:path _:edd6143998a34be492b5ce3b23fc834d75440;
+shape:Act_TreatyProcess sh:path _:1c23ec99aeed4801a9fbc3eddcf4f8d665406;
   sh:name "approves"@en, "approuve"@fr;
   sh:description "Indique le traité approuvé par un acte."@fr;
   sh:nodeKind sh:IRI;
   sh:node shape:TreatyProcess;
   dash:searchWidget config-core:NonSelectableProperty .
 
-_:edd6143998a34be492b5ce3b23fc834d75440 sh:inversePath jolux:approbationAct .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665406 sh:inversePath jolux:approbationAct .
 
 shape:Act_basisFor sh:path jolux:basedOn;
   sh:name "basis For"@en, "règlement d'exécution de"@fr;
@@ -547,14 +584,14 @@ shape:Act_basisFor sh:path jolux:basedOn;
   sh:class jolux:Act;
   dash:searchWidget config-core:AutocompleteProperty .
 
-shape:Act_basedOn sh:path _:edd6143998a34be492b5ce3b23fc834d75441;
+shape:Act_basedOn sh:path _:1c23ec99aeed4801a9fbc3eddcf4f8d665407;
   sh:name "basis For"@en, "a pour règlement d'exécution"@fr;
   sh:description "Indique le ou les ressources légales qui ont comme base la resource décrite. Par exemple, un acte de base est la base pour des règlements d'exécution."@fr;
   sh:nodeKind sh:IRI;
   sh:class jolux:Act;
   dash:searchWidget config-core:AutocompleteProperty .
 
-_:edd6143998a34be492b5ce3b23fc834d75441 sh:inversePath jolux:basedOn .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665407 sh:inversePath jolux:basedOn .
 
 shape:Act_cites sh:path jolux:cites;
   sh:name "cites"@en, "cite"@fr;
@@ -563,14 +600,14 @@ shape:Act_cites sh:path jolux:cites;
   sh:class jolux:Act;
   dash:searchWidget config-core:AutocompleteProperty .
 
-shape:Act_citedBy sh:path _:edd6143998a34be492b5ce3b23fc834d75442;
+shape:Act_citedBy sh:path _:1c23ec99aeed4801a9fbc3eddcf4f8d665408;
   sh:name "cited by"@en, "cité par"@fr;
   sh:description "Indique la resource juridique qui cite la ressource décrite (inféré)."@fr;
   sh:nodeKind sh:IRI;
   sh:class jolux:Act;
   dash:searchWidget config-core:AutocompleteProperty .
 
-_:edd6143998a34be492b5ce3b23fc834d75442 sh:inversePath jolux:cites .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665408 sh:inversePath jolux:cites .
 
 shape:Act_repeals sh:path jolux:repeals;
   sh:name "repeals"@en, "abroge"@fr;
@@ -579,14 +616,14 @@ shape:Act_repeals sh:path jolux:repeals;
   sh:class jolux:Act;
   dash:searchWidget config-core:AutocompleteProperty .
 
-shape:Act_repealedBy sh:path _:edd6143998a34be492b5ce3b23fc834d75443;
+shape:Act_repealedBy sh:path _:1c23ec99aeed4801a9fbc3eddcf4f8d665409;
   sh:name "repealed by"@en, "abrogé par"@fr;
   sh:description "Indique la ressource légale abrogée par la ressource légale décrite."@fr;
   sh:nodeKind sh:IRI;
   sh:class jolux:Act;
   dash:searchWidget config-core:AutocompleteProperty .
 
-_:edd6143998a34be492b5ce3b23fc834d75443 sh:inversePath jolux:repeals .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665409 sh:inversePath jolux:repeals .
 
 shape:Act_rectifies sh:path jolux:rectifies;
   sh:name "rectifies"@en, "rectifie"@fr;
@@ -595,82 +632,82 @@ shape:Act_rectifies sh:path jolux:rectifies;
   sh:class jolux:Act;
   dash:searchWidget config-core:AutocompleteProperty .
 
-shape:Act_rectifiedBy sh:path _:edd6143998a34be492b5ce3b23fc834d75444;
+shape:Act_rectifiedBy sh:path _:1c23ec99aeed4801a9fbc3eddcf4f8d665410;
   sh:name "rectified by"@en, "rectifié par"@fr;
   sh:description "Indique l'acte rectifié par l'acte décrit."@fr;
   sh:nodeKind sh:IRI;
   sh:class jolux:Act;
   dash:searchWidget config-core:AutocompleteProperty .
 
-_:edd6143998a34be492b5ce3b23fc834d75444 sh:inversePath jolux:rectifies .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665410 sh:inversePath jolux:rectifies .
 
-shape:Act_foreseesBasisFor sh:path _:edd6143998a34be492b5ce3b23fc834d75445;
+shape:Act_foreseesBasisFor sh:path _:1c23ec99aeed4801a9fbc3eddcf4f8d665411;
   sh:name "foresees Basis for"@en, "règlement d'exécution prévu par"@fr;
   sh:description "règlement d'exécution prévu par"@fr;
   sh:nodeKind sh:IRI;
   sh:node shape:InitialDraft;
   dash:searchWidget config-core:AutocompleteProperty .
 
-_:edd6143998a34be492b5ce3b23fc834d75445 rdf:first _:edd6143998a34be492b5ce3b23fc834d75446;
-  rdf:rest _:edd6143998a34be492b5ce3b23fc834d75447 .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665411 rdf:first _:1c23ec99aeed4801a9fbc3eddcf4f8d665412;
+  rdf:rest _:1c23ec99aeed4801a9fbc3eddcf4f8d665413 .
 
-_:edd6143998a34be492b5ce3b23fc834d75446 sh:inversePath jolux:foreseesBasedOn .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665412 sh:inversePath jolux:foreseesBasedOn .
 
-_:edd6143998a34be492b5ce3b23fc834d75447 rdf:first _:edd6143998a34be492b5ce3b23fc834d75448;
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665413 rdf:first _:1c23ec99aeed4801a9fbc3eddcf4f8d665414;
   rdf:rest rdf:nil .
 
-_:edd6143998a34be492b5ce3b23fc834d75448 sh:inversePath jolux:basedOn .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665414 sh:inversePath jolux:basedOn .
 
-shape:Act_foreseesModificationBy sh:path _:edd6143998a34be492b5ce3b23fc834d75449;
+shape:Act_foreseesModificationBy sh:path _:1c23ec99aeed4801a9fbc3eddcf4f8d665415;
   sh:name "foresees Modification by"@en, "sera modifié par"@fr;
   sh:description "sera modifié par"@fr;
   sh:nodeKind sh:IRI;
   sh:node shape:InitialDraft;
   dash:searchWidget config-core:AutocompleteProperty .
 
-_:edd6143998a34be492b5ce3b23fc834d75449 rdf:first _:edd6143998a34be492b5ce3b23fc834d75450;
-  rdf:rest _:edd6143998a34be492b5ce3b23fc834d75451 .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665415 rdf:first _:1c23ec99aeed4801a9fbc3eddcf4f8d665416;
+  rdf:rest _:1c23ec99aeed4801a9fbc3eddcf4f8d665417 .
 
-_:edd6143998a34be492b5ce3b23fc834d75450 sh:inversePath jolux:foreseesModificationOf .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665416 sh:inversePath jolux:foreseesModificationOf .
 
-_:edd6143998a34be492b5ce3b23fc834d75451 rdf:first _:edd6143998a34be492b5ce3b23fc834d75452;
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665417 rdf:first _:1c23ec99aeed4801a9fbc3eddcf4f8d665418;
   rdf:rest rdf:nil .
 
-_:edd6143998a34be492b5ce3b23fc834d75452 sh:inversePath jolux:basedOn .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665418 sh:inversePath jolux:basedOn .
 
-shape:Act_foreseesRectificationBy sh:path _:edd6143998a34be492b5ce3b23fc834d75453;
+shape:Act_foreseesRectificationBy sh:path _:1c23ec99aeed4801a9fbc3eddcf4f8d665419;
   sh:name "foresees Rectification by"@en, "sera rectifié par"@fr;
   sh:description "sera rectifié par"@fr;
   sh:nodeKind sh:IRI;
   sh:node shape:InitialDraft;
   dash:searchWidget config-core:AutocompleteProperty .
 
-_:edd6143998a34be492b5ce3b23fc834d75453 rdf:first _:edd6143998a34be492b5ce3b23fc834d75454;
-  rdf:rest _:edd6143998a34be492b5ce3b23fc834d75455 .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665419 rdf:first _:1c23ec99aeed4801a9fbc3eddcf4f8d665420;
+  rdf:rest _:1c23ec99aeed4801a9fbc3eddcf4f8d665421 .
 
-_:edd6143998a34be492b5ce3b23fc834d75454 sh:inversePath jolux:foreseesRectificationOf .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665420 sh:inversePath jolux:foreseesRectificationOf .
 
-_:edd6143998a34be492b5ce3b23fc834d75455 rdf:first _:edd6143998a34be492b5ce3b23fc834d75456;
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665421 rdf:first _:1c23ec99aeed4801a9fbc3eddcf4f8d665422;
   rdf:rest rdf:nil .
 
-_:edd6143998a34be492b5ce3b23fc834d75456 sh:inversePath jolux:basedOn .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665422 sh:inversePath jolux:basedOn .
 
-shape:Act_foreseesRepealBy sh:path _:edd6143998a34be492b5ce3b23fc834d75457;
+shape:Act_foreseesRepealBy sh:path _:1c23ec99aeed4801a9fbc3eddcf4f8d665423;
   sh:name "foresees Repeal by"@en, "sera abrogé par"@fr;
   sh:description "sera abrogé par"@fr;
   sh:nodeKind sh:IRI;
   sh:node shape:InitialDraft;
   dash:searchWidget config-core:AutocompleteProperty .
 
-_:edd6143998a34be492b5ce3b23fc834d75457 rdf:first _:edd6143998a34be492b5ce3b23fc834d75458;
-  rdf:rest _:edd6143998a34be492b5ce3b23fc834d75459 .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665423 rdf:first _:1c23ec99aeed4801a9fbc3eddcf4f8d665424;
+  rdf:rest _:1c23ec99aeed4801a9fbc3eddcf4f8d665425 .
 
-_:edd6143998a34be492b5ce3b23fc834d75458 sh:inversePath jolux:foreseesRepealOf .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665424 sh:inversePath jolux:foreseesRepealOf .
 
-_:edd6143998a34be492b5ce3b23fc834d75459 rdf:first _:edd6143998a34be492b5ce3b23fc834d75460;
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665425 rdf:first _:1c23ec99aeed4801a9fbc3eddcf4f8d665426;
   rdf:rest rdf:nil .
 
-_:edd6143998a34be492b5ce3b23fc834d75460 sh:inversePath jolux:basedOn .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665426 sh:inversePath jolux:basedOn .
 
 shape:CodeRecueil_typeDocument sh:path jolux:typeDocument;
   sh:name "type Document"@en, "type"@fr;
@@ -706,14 +743,14 @@ shape:CodeRecueil_publicationDate sh:path jolux:publicationDate;
   sh:datatype xsd:date;
   sh:node shape:DatePublication .
 
-shape:CodeRecueil_displayTitle sh:path _:edd6143998a34be492b5ce3b23fc834d75461;
+shape:CodeRecueil_displayTitle sh:path _:1c23ec99aeed4801a9fbc3eddcf4f8d665427;
   dash:propertyRole dash:LabelRole;
   sh:deactivated "true"^^xsd:boolean .
 
-_:edd6143998a34be492b5ce3b23fc834d75461 rdf:first jolux:isRealizedBy;
-  rdf:rest _:edd6143998a34be492b5ce3b23fc834d75462 .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665427 rdf:first jolux:isRealizedBy;
+  rdf:rest _:1c23ec99aeed4801a9fbc3eddcf4f8d665428 .
 
-_:edd6143998a34be492b5ce3b23fc834d75462 rdf:first jolux:title;
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665428 rdf:first jolux:title;
   rdf:rest rdf:nil .
 
 shape:Consolidation_typeDocument sh:path jolux:typeDocument;
@@ -757,14 +794,14 @@ shape:Consolidation_dateApplicability sh:path jolux:dateApplicability;
   sh:datatype xsd:date;
   sh:node shape:DateApplicability .
 
-shape:Consolidation_displayTitle sh:path _:edd6143998a34be492b5ce3b23fc834d75463;
+shape:Consolidation_displayTitle sh:path _:1c23ec99aeed4801a9fbc3eddcf4f8d665429;
   dash:propertyRole dash:LabelRole;
   sh:deactivated "true"^^xsd:boolean .
 
-_:edd6143998a34be492b5ce3b23fc834d75463 rdf:first jolux:isRealizedBy;
-  rdf:rest _:edd6143998a34be492b5ce3b23fc834d75464 .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665429 rdf:first jolux:isRealizedBy;
+  rdf:rest _:1c23ec99aeed4801a9fbc3eddcf4f8d665430 .
 
-_:edd6143998a34be492b5ce3b23fc834d75464 rdf:first jolux:title;
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665430 rdf:first jolux:title;
   rdf:rest rdf:nil .
 
 shape:MemorialSerial_memorialNumber sh:path jolux:memorialName;
@@ -873,23 +910,23 @@ shape:EULegalResource_typeDocument sh:path jolux:typeDocument;
   sh:node shape:LegalResourceDocumentType;
   dash:searchWidget config-core:ListProperty .
 
-shape:EULegalResource_transposedByDraft sh:path _:edd6143998a34be492b5ce3b23fc834d75465;
+shape:EULegalResource_transposedByDraft sh:path _:1c23ec99aeed4801a9fbc3eddcf4f8d665431;
   sh:name "transposed by"@en, "est transposée par"@fr;
   sh:description "Indique le ou les projets qui transpose le texte européen décrit (inféré)."@en;
   sh:nodeKind sh:IRI;
   sh:node shape:InitialDraft;
   dash:searchWidget config-core:AutocompleteProperty .
 
-_:edd6143998a34be492b5ce3b23fc834d75465 sh:inversePath jolux:draftTransposes .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665431 sh:inversePath jolux:draftTransposes .
 
-shape:EULegalResource_transposedByAct sh:path _:edd6143998a34be492b5ce3b23fc834d75466;
+shape:EULegalResource_transposedByAct sh:path _:1c23ec99aeed4801a9fbc3eddcf4f8d665432;
   sh:name "transposed by"@en, "est transposée par"@fr;
   sh:description "Indique le ou les actes qui transpose le texte européen décrit (inféré)."@en;
   sh:nodeKind sh:IRI;
   sh:node shape:Act;
   dash:searchWidget config-core:AutocompleteProperty .
 
-_:edd6143998a34be492b5ce3b23fc834d75466 sh:inversePath jolux:transposes .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665432 sh:inversePath jolux:transposes .
 
 shape:InitialDraft_eventType sh:path jolux:eventType;
   sh:name "has type"@en, "a pour type"@fr;
@@ -939,95 +976,95 @@ shape:InitialDraft_hasResultingLegalResource sh:path jolux:hasResultingLegalReso
   sh:node shape:Act;
   dash:searchWidget config-core:ListProperty .
 
-shape:InitialDraft_foreseesBasedOn sh:path _:edd6143998a34be492b5ce3b23fc834d75467;
+shape:InitialDraft_foreseesBasedOn sh:path _:1c23ec99aeed4801a9fbc3eddcf4f8d665433;
   sh:name "foresees Based On"@en, "prévoit règlement d'exécution de"@fr;
   sh:description "Indique une LegalResource déjà publiée sur laquelle la législation future, si elle est adoptée, sera fondée. Les lecteurs pourront se reporter à la définition de la propriété jolux:basedOn"@fr;
   sh:nodeKind sh:IRI;
   sh:class jolux:Act;
   dash:searchWidget config-core:AutocompleteProperty .
 
-_:edd6143998a34be492b5ce3b23fc834d75467 rdf:first jolux:basedOn;
-  rdf:rest _:edd6143998a34be492b5ce3b23fc834d75468 .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665433 rdf:first jolux:basedOn;
+  rdf:rest _:1c23ec99aeed4801a9fbc3eddcf4f8d665434 .
 
-_:edd6143998a34be492b5ce3b23fc834d75468 rdf:first jolux:foreseesBasedOn;
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665434 rdf:first jolux:foreseesBasedOn;
   rdf:rest rdf:nil .
 
-shape:InitialDraft_foreseesModificationOf sh:path _:edd6143998a34be492b5ce3b23fc834d75469;
+shape:InitialDraft_foreseesModificationOf sh:path _:1c23ec99aeed4801a9fbc3eddcf4f8d665435;
   sh:name "foresees Modification Of"@en, "prévoit modification de"@fr;
   sh:description "Indique la ressource légale qu'il est prévu de modifier dans le projet législatif décrit"@fr;
   sh:nodeKind sh:IRI;
   sh:class jolux:Act;
   dash:searchWidget config-core:AutocompleteProperty .
 
-_:edd6143998a34be492b5ce3b23fc834d75469 rdf:first jolux:basedOn;
-  rdf:rest _:edd6143998a34be492b5ce3b23fc834d75470 .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665435 rdf:first jolux:basedOn;
+  rdf:rest _:1c23ec99aeed4801a9fbc3eddcf4f8d665436 .
 
-_:edd6143998a34be492b5ce3b23fc834d75470 rdf:first jolux:foreseesModificationOf;
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665436 rdf:first jolux:foreseesModificationOf;
   rdf:rest rdf:nil .
 
-shape:InitialDraft_foreseesRectificationOf sh:path _:edd6143998a34be492b5ce3b23fc834d75471;
+shape:InitialDraft_foreseesRectificationOf sh:path _:1c23ec99aeed4801a9fbc3eddcf4f8d665437;
   sh:name "foresees Rectification Of"@en, "prévoit rectification de"@fr;
   sh:description "Rectification prévue de"@fr;
   sh:nodeKind sh:IRI;
   sh:class jolux:Act;
   dash:searchWidget config-core:AutocompleteProperty .
 
-_:edd6143998a34be492b5ce3b23fc834d75471 rdf:first jolux:basedOn;
-  rdf:rest _:edd6143998a34be492b5ce3b23fc834d75472 .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665437 rdf:first jolux:basedOn;
+  rdf:rest _:1c23ec99aeed4801a9fbc3eddcf4f8d665438 .
 
-_:edd6143998a34be492b5ce3b23fc834d75472 rdf:first jolux:foreseesRectificationOf;
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665438 rdf:first jolux:foreseesRectificationOf;
   rdf:rest rdf:nil .
 
-shape:InitialDraft_foreseesRepealOf sh:path _:edd6143998a34be492b5ce3b23fc834d75473;
+shape:InitialDraft_foreseesRepealOf sh:path _:1c23ec99aeed4801a9fbc3eddcf4f8d665439;
   sh:name "foresees Repeal Of"@en, "prévoit abrogation de"@fr;
   sh:description "Indique la ressource légale qu'il est prévu d'abroger par le projet législatif décrit"@fr;
   sh:nodeKind sh:IRI;
   sh:class jolux:Act;
   dash:searchWidget config-core:AutocompleteProperty .
 
-_:edd6143998a34be492b5ce3b23fc834d75473 rdf:first jolux:basedOn;
-  rdf:rest _:edd6143998a34be492b5ce3b23fc834d75474 .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665439 rdf:first jolux:basedOn;
+  rdf:rest _:1c23ec99aeed4801a9fbc3eddcf4f8d665440 .
 
-_:edd6143998a34be492b5ce3b23fc834d75474 rdf:first jolux:foreseesRepealOf;
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665440 rdf:first jolux:foreseesRepealOf;
   rdf:rest rdf:nil .
 
-shape:InitialDraft_foreseesTranspositionOf sh:path _:edd6143998a34be492b5ce3b23fc834d75475;
+shape:InitialDraft_foreseesTranspositionOf sh:path _:1c23ec99aeed4801a9fbc3eddcf4f8d665441;
   sh:name "foresees Transposition Of"@en, "prévoit transposition de"@fr;
   sh:description "Indique la directive européenne qu'il est prévu de transposer dans le projet législatif décrit"@fr;
   sh:nodeKind sh:IRI;
   sh:class jolux:EULegalResource;
   dash:searchWidget config-core:AutocompleteProperty .
 
-_:edd6143998a34be492b5ce3b23fc834d75475 rdf:first jolux:basedOn;
-  rdf:rest _:edd6143998a34be492b5ce3b23fc834d75476 .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665441 rdf:first jolux:basedOn;
+  rdf:rest _:1c23ec99aeed4801a9fbc3eddcf4f8d665442 .
 
-_:edd6143998a34be492b5ce3b23fc834d75476 rdf:first jolux:foreseesTranspositionOf;
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665442 rdf:first jolux:foreseesTranspositionOf;
   rdf:rest rdf:nil .
 
-shape:InitialDraft_depositDate sh:path _:edd6143998a34be492b5ce3b23fc834d75477;
+shape:InitialDraft_depositDate sh:path _:1c23ec99aeed4801a9fbc3eddcf4f8d665443;
   sh:name "depositDate"@en, "date de dépôt"@fr;
   sh:description "Date de dépôt du projet"@fr;
   sh:nodeKind sh:Literal;
   sh:datatype xsd:date;
   sh:node shape:DateDepot .
 
-_:edd6143998a34be492b5ce3b23fc834d75477 rdf:first jolux:draftHasTask;
-  rdf:rest _:edd6143998a34be492b5ce3b23fc834d75478 .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665443 rdf:first jolux:draftHasTask;
+  rdf:rest _:1c23ec99aeed4801a9fbc3eddcf4f8d665444 .
 
-_:edd6143998a34be492b5ce3b23fc834d75478 rdf:first jolux:depositDate;
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665444 rdf:first jolux:depositDate;
   rdf:rest rdf:nil .
 
-shape:InitialDraft_referralDate sh:path _:edd6143998a34be492b5ce3b23fc834d75479;
+shape:InitialDraft_referralDate sh:path _:1c23ec99aeed4801a9fbc3eddcf4f8d665445;
   sh:name "referralDate"@en, "date de saisine du Conseil d'État"@fr;
   sh:description "Date de la saisine du Conseil d'Etat par le ministère, par l'intermédiaire du SCL"@fr;
   sh:nodeKind sh:Literal;
   sh:datatype xsd:date;
   sh:node shape:DateSaisineCE .
 
-_:edd6143998a34be492b5ce3b23fc834d75479 rdf:first jolux:hasOpinion;
-  rdf:rest _:edd6143998a34be492b5ce3b23fc834d75480 .
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665445 rdf:first jolux:hasOpinion;
+  rdf:rest _:1c23ec99aeed4801a9fbc3eddcf4f8d665446 .
 
-_:edd6143998a34be492b5ce3b23fc834d75480 rdf:first jolux:referralDate;
+_:1c23ec99aeed4801a9fbc3eddcf4f8d665446 rdf:first jolux:referralDate;
   rdf:rest rdf:nil .
 
 shape:Concept_prefLabel sh:path skos:prefLabel;
